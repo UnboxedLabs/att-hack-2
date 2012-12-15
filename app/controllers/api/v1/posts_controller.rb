@@ -63,9 +63,13 @@ module Api
         down_votes = []
         votings.each do |voting|
           if voting.up_vote?
-            up_votes << Post.find(voting.voteable_id)
+            post = Post.find(voting.voteable_id)
+            puts "WTF IS POST #{post}"
+            up_votes << post
           else
-            down_votes << Post.find(voting.voteable_id)
+            post = Post.find(voting.voteable_id)
+            puts "WTF IS DOWN POST #{post}"
+            down_votes << post
           end
         end
         msg = { status: :ok, message: "Votes history", posts: { up_votes: up_votes, down_votes: down_votes} }
