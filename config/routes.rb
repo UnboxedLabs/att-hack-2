@@ -1,8 +1,9 @@
 AttHack2::Application.routes.draw do
 
-  root to: 'api::welcome#ping'
+  root to: 'static_pages#home'
 
   namespace :api, :defaults => { :format => 'json' } do
+    get 'ping' => 'welcome#ping'
     namespace :v1 do
       namespace :devices do
         post "create"
