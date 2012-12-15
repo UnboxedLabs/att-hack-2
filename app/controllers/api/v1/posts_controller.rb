@@ -64,11 +64,9 @@ module Api
         votings.each do |voting|
           if voting.up_vote?
             post = Post.find(voting.voteable_id)
-            puts "WTF IS POST #{post}"
             up_votes << post
           else
             post = Post.find(voting.voteable_id)
-            puts "WTF IS DOWN POST #{post}"
             down_votes << post
           end
         end
