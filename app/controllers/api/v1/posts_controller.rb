@@ -62,13 +62,11 @@ module Api
         up_votes = []
         down_votes = []
         votings.each do |voting|
-          puts "VOTING"
-          puts voting.inspect
-          #if voting.up_vote?
-          #  up_votes << voting.post
-          #else
-          #  down_votes << voting.post
-          #end
+          if voting.up_vote?
+            up_votes << Post.find(voting.voteable_id)
+          else
+            down_votes << Post.find(voting.voteable_id)
+          end
         end
         msg = { status: :ok, message: "Votes history", posts: { up_votes: up_votes, down_votes: down_votes} }
         render json: msg , status: :ok
