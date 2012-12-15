@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :user do
-    name "MyString"
-    temporary false
+    name "AnonymousUser"
+    temporary true
   end
 end

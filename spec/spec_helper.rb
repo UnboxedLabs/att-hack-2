@@ -18,6 +18,8 @@ RSpec.configure do |config|
   # config.mock_with :rr
   config.include FactoryGirl::Syntax::Methods
 
+  config.extend ApiMacros, api_version: :v1
+
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   #config.fixture_path = "#{::Rails.root}/spec/fixtures"

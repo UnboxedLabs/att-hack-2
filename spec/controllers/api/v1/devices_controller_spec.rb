@@ -1,11 +1,8 @@
 require 'spec_helper'
 
-describe Api::V1::DevicesController do
+describe Api::V1::DevicesController, api_version: :v1 do
+  authorize_request
 
-  before(:each) do
-    api_key = ApiKey.create!
-    request.env['HTTP_AUTHORIZATION'] = "Token token=#{api_key.access_token}"
-  end
   describe "#create" do
     let(:params) { {device: { uid: "unique" }}}
     let(:json) { JSON.parse(response.body).with_indifferent_access }
