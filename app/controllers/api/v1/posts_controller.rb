@@ -5,9 +5,9 @@ module Api
       before_filter :retrieve_post, only: [:up_vote, :down_vote]
       def create
         puts "POST PARAMS"
-        #puts params[:post].except(:avatar)
         post = @user.posts.build(params[:post])
-        ap post
+        puts "AVATAR PRESENT: #{params[:post][:avatar].present?}"
+
         if post.save
           render json: { status: :ok, message: "Post created", post: post }, status: :created
         else
