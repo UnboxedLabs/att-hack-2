@@ -21,7 +21,7 @@ module Api
           if params[:radius].present?
             posts = Post.near([latitude, longitude], params[:radius])
           else
-            posts = Post.near([latitude, longitude], 5) # 5 Miles default
+            posts = Post.near([latitude, longitude], 30) # 30 Miles default
           end
         else
           render json: { status: :error, message: "No location provided" }, status: :bad_request and return
