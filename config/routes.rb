@@ -13,6 +13,7 @@ AttHack2::Application.routes.draw do
         post  "down_vote"
         get   "index"
         get   "show"
+        get   "history"
       end
     end
   end

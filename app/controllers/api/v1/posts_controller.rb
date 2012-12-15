@@ -57,6 +57,21 @@ module Api
         render json: { status: :ok, message: "Voted posted!", post: :post }, status: :ok
       end
 
+      def history
+        votings = @user.votings
+        up_votes = []
+        down_votes = []
+        votings.each do |voting|
+          if voting.up_vote?
+            up_votes << voting.post
+          else
+            down_votes << voting.post
+          end
+        end
+        msg = { status: :ok, message: "Votes history", posts: { up_votes: up_votes, down_votes: down_votes} }
+        render json: msg , status: :ok
+      end
+
 
       private
       def retrieve_post
