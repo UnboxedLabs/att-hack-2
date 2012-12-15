@@ -10,6 +10,8 @@ gem 'thin'
 gem 'geocoder'
 gem 'make_voteable'
 
+gem 'awesome_print'
+
 gem 'carrierwave'
 gem 'cloudinary'
 
