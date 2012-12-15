@@ -4,5 +4,7 @@ class Post < ActiveRecord::Base
   belongs_to :user
   reverse_geocoded_by :latitude, :longitude
 
+  default_scope order('created_at DESC')
+
   mount_uploader :avatar, AvatarUploader
 end
