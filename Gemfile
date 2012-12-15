@@ -10,6 +10,9 @@ gem 'thin'
 gem 'geocoder'
 gem 'make_voteable'
 
+gem 'carrierwave'
+gem 'cloudinary'
+
 group :test, :development do
   gem 'rspec-rails'
   gem 'factory_girl_rails'

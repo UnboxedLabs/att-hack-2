@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121215045337) do
+ActiveRecord::Schema.define(:version => 20121215173315) do
 
   create_table "api_keys", :force => true do |t|
     t.string   "access_token"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(:version => 20121215045337) do
     t.integer  "user_id"
     t.integer  "up_votes",    :default => 0, :null => false
     t.integer  "down_votes",  :default => 0, :null => false
+    t.string   "avatar"
   end
 
   create_table "users", :force => true do |t|
