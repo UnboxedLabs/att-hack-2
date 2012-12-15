@@ -1,7 +1,13 @@
 AttHack2::Application.routes.draw do
-  get "welcome/ping"
+
 
   root to: 'welcome#ping'
+
+  namespace :api, :defaults => { :format => 'json' } do
+    namespace :v1 do
+      post "devices/create"
+    end
+  end
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
