@@ -1,6 +1,6 @@
 AttHack2::Application.routes.draw do
 
-  root to: 'welcome#ping'
+  root to: 'api::welcome#ping'
 
   namespace :api, :defaults => { :format => 'json' } do
     namespace :v1 do

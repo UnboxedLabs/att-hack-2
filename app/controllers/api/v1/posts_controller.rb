@@ -1,6 +1,6 @@
 module Api
   module V1
-    class PostsController < ApplicationController
+    class PostsController < ApiController
       before_filter :retrieve_user
       before_filter :retrieve_post, only: [:up_vote, :down_vote]
       def create
@@ -62,11 +62,13 @@ module Api
         up_votes = []
         down_votes = []
         votings.each do |voting|
-          if voting.up_vote?
-            up_votes << voting.post
-          else
-            down_votes << voting.post
-          end
+          puts "VOTING"
+          puts voting.inspect
+          #if voting.up_vote?
+          #  up_votes << voting.post
+          #else
+          #  down_votes << voting.post
+          #end
         end
         msg = { status: :ok, message: "Votes history", posts: { up_votes: up_votes, down_votes: down_votes} }
         render json: msg , status: :ok
