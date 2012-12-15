@@ -15,7 +15,16 @@ module Api
       end
 
       def index
-        posts = @user.posts
+        if params[:latitude].present? && params[:longitude].present?
+          latitude, longitude = params[:latitude], params[:longitude]
+          if params[:radius].present?
+            posts = Post.near([latitude, longitude], params[:radius])
+          else
+            posts = Post.near([latitude, longitude], 5) # 5 Miles default
+          end
+        else
+          render json: { status: :error, message: "No location provided" }, status: :bad_request and return
+        end
         render json: { status: :ok, message: "Post list", posts: posts }, status: :ok
       end
 

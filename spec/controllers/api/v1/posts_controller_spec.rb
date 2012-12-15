@@ -21,11 +21,15 @@ describe Api::V1::PostsController, api_version: :v1 do
   end
 
   describe "#index" do
-    let(:params) { {user_id: user.id}}
+    let(:params) { {user_id: user.id, latitude: 2.0, longitude: 2.0, radius: 50 } }
 
     before(:each) do
       FactoryGirl.create(:post, user_id: user.id)
       get :index, params
+    end
+
+    it "is a successful call" do
+      puts "JSON #{json}"
     end
 
     it "returns a list of posts" do
