@@ -9,6 +9,8 @@ AttHack2::Application.routes.draw do
       end
       namespace :posts do
         post  "create"
+        post  "up_vote"
+        post  "down_vote"
         get   "index"
         get   "show"
       end

@@ -51,4 +51,32 @@ describe Api::V1::PostsController, api_version: :v1 do
     end
   end
 
+  describe "#up_vote" do
+    let(:new_post) { FactoryGirl.create(:post, user_id: user.id) }
+    let(:params) { { user_id: user.id, post_id: new_post.id } }
+    it "changes the votes for the post" do
+      votes = new_post.up_votes
+      post :up_vote, params
+      new_post.reload.up_votes.should_not eq(votes)
+    end
+    it "returns ok" do
+      post :up_vote, params
+      response.should be_success
+    end
+  end
+
+  describe "#down_votes" do
+    let(:new_post) { FactoryGirl.create(:post, user_id: user.id) }
+    let(:params) { { user_id: user.id, post_id: new_post.id } }
+    it "changes teh votes for the post" do
+      votes = new_post.down_votes
+      post :down_vote, params
+      new_post.reload.down_votes.should_not eq(votes)
+    end
+    it "returns ok" do
+      post :down_vote, params
+      response.should be_success
+    end
+  end
+
 end
