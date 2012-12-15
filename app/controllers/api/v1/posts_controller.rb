@@ -19,6 +19,12 @@ module Api
       end
 
       def show
+        unless post = @user.posts.find(params[:post_id])
+          render json: { status: :error, message: "Post not found" }, status: :not_found and return
+        end
+
+        render json: { status: :ok, message: "Post", post: post }, status: :ok
+
       end
 
       private
