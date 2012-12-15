@@ -2,7 +2,7 @@ module Api
   module V1
     class DevicesController < ApplicationController
       def create
-        if @device = Device.find_by_uid(params[:device][:uid])
+        if params[:device].present? && @device = Device.find_by_uid(params[:device][:uid])
           msg =  { status: :ok, message: "Device already exists", device: @device, user: @device.user }
           render json: msg, status: :ok and return
         end
