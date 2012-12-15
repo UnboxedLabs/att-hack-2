@@ -7,8 +7,8 @@ module Api
         puts "POST PARAMS"
         puts params.inspect
         post = @user.posts.build(params[:post])
-        puts "AVATAR PRESENT: #{params[:post][:avatar].present?}"
-
+        puts "AVATAR PRESENT: #{params[:avatar].present?}"
+        post.avatar = params[:avatar]
         if post.save
           render json: { status: :ok, message: "Post created", post: post }, status: :created
         else
