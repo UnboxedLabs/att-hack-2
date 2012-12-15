@@ -7,7 +7,19 @@ gem 'rails', '3.2.9'
 
 gem 'pg'
 
+group :test, :development do
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+end
 
+group :test do
+  gem 'database_cleaner'
+  gem 'shoulda-matchers'
+end
+
+group :development do
+  gem 'thin'
+end
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

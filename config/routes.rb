@@ -1,4 +1,7 @@
 AttHack2::Application.routes.draw do
+  get "welcome/ping"
+
+  root to: 'welcome#ping'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
