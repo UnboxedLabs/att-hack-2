@@ -8,6 +8,7 @@ gem 'rails', '3.2.9'
 gem 'pg'
 gem 'thin'
 gem 'geocoder'
+gem 'make_voteable'
 
 group :test, :development do
   gem 'rspec-rails'
